@@ -1,0 +1,52 @@
+---
+import { Image } from "astro:assets";
+// swap this image for whatever you want to show
+import BgImage from "@/assets/heroBg.jpg";
+import Heading from "@/components/Heading";
+---
+
+<section id="about" class="relative bg-light-primary section-py">
+  <div class="inner-section">
+    <div class="twoCol-layout">
+      <!-- Copy -->
+      <div>
+        <!-- eyebrow -->
+        <Heading
+          tagName="span"
+          className="h5 font-semibold text-xl text-primary mb-2"
+          >Who We Are
+        </Heading>
+        <Heading tagName="h2" className="text-dark-primary">
+          Trust, Excellence,<br class="hidden md:block" /> Community
+        </Heading>
+
+        <p class="mt-6 text-dark-secondary">
+          Faria’s Demolition and Disposal is your trusted partner, built on a
+          strong foundation of reliability and transparency. Our professional
+          team ensures prompt and efficient services that meet your needs,
+          without compromising safety or environmental standards. We are
+          dedicated to offering high-quality, affordable services to every
+          client, including comprehensive Demolition &amp; Disposal, Junk
+          Removal, and Estate Cleanouts. Our goal is not just about cleaning but
+          about creating rejuvenated, inspiring spaces. Rooted in our local
+          community, we understand the unique ethos, environmental concerns, and
+          demands of our neighbors.
+        </p>
+      </div>
+
+      <!-- Image -->
+      <div class="relative">
+        <div class="overflow-hidden shadow-xl ring-1 ring-black/5">
+          <Image
+            src={BgImage}
+            alt="Faria's Demolition truck at a job site"
+            widths={[640, 768, 1024, 1280]}
+            sizes="(min-width: 1024px) 640px, 100vw"
+            loading="lazy"
+            class="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

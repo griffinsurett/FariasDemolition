@@ -1,0 +1,89 @@
+---
+import { Image } from "astro:assets";
+import Heading from "@/components/Heading";
+import AccordionItem from "@/components/LoopComponents/AccordionItem.jsx"; // make sure .jsx
+
+import Person from "@/assets/person.png";
+
+const items = Astro.props.items ?? [
+  {
+    question: "Does Faria’s Demolition and Disposal handle pool demolitions?",
+    answer:
+      "Yes. We handle full or partial pool removals, including permits, backfill, and haul-away. We’ll advise on the best approach for resale and code compliance.",
+  },
+  {
+    question:
+      "Is Faria’s Demolition and Disposal capable of performing bathroom demolitions?",
+    answer:
+      "Absolutely. We remove fixtures, tile, subfloor as needed, and keep dust control tight to protect the rest of your home.",
+  },
+  {
+    question:
+      "Does Faria’s Demolition and Disposal specialize in kitchen demolitions?",
+    answer:
+      "Yes—cabinets, counters, appliances, and selective wall/demo as scoped. We coordinate disposal and recycling where possible.",
+  },
+  {
+    question:
+      "Can Faria’s Demolition and Disposal manage both interior and exterior demolitions?",
+    answer:
+      "We do both. Interior selective demo, sheds/garages, decks, siding tear-offs, and more.",
+  },
+  {
+    question:
+      "Does Faria's Demolition and Disposal accept subcontracted work from other companies?",
+    answer:
+      "Yes. We frequently subcontract for GCs, remodelers, and restoration firms. Send scope and timelines for a fast quote.",
+  },
+  {
+    question:
+      "How long does it take for your team to come and give a quote after I reach out to you?",
+    answer:
+      "Typically within 1–2 business days. For urgent jobs, call us and we’ll try to accommodate same-day assessments.",
+  },
+];
+
+// radio group so only one item is open at a time
+const groupName = "faq-accordion";
+const defaultIndex = 0;
+---
+
+<section id="faq" class="bg-light-primary pt-6">
+  <div class="inner-section">
+    <div class="text-center mb-8">
+      <p class="h5 text-primary mb-1">FAQ</p>
+      <Heading tagName="h2" className="text-dark-primary">
+        Have Any Question. Look Here Now
+      </Heading>
+    </div>
+
+    <div class="flex flex-col-reverse lg:flex-row justify-center items-start">
+      <div class="w-full lg:sticky lg:top-0">
+        <Image
+          src={Person}
+          alt="Faria's Demolition and Disposal"
+          widths={[640, 768, 1024]}
+          sizes="(min-width: 1024px) 40vw, 100vw"
+          loading="lazy"
+          class="w-auto h-[full] object-contain"
+        />
+      </div>
+
+      <div
+        class="flex flex-col items-start justify-center gap-5 w-full lg:sticky lg:top-0 pb-5"
+      >
+        {
+          items.map((it, i) => (
+            <AccordionItem
+              data={{ question: it.question, answer: it.answer }}
+              name={groupName}
+              value={String(i)}
+              defaultChecked={i === defaultIndex}
+              client:visible
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>

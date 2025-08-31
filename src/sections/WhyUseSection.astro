@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+// swap to your real photo:
+import WhyImg from "@/assets/tanktopandnico.jpg";
+import Heading from "@/components/Heading";
+---
+
+<section id="why-use" class="bg-light-primary section-py">
+  <div class="inner-section">
+    <div class="twoCol-layout">
+      <!-- Image (left on desktop) -->
+      <div class="order-2 lg:order-1">
+        <Image
+          src={WhyImg}
+          alt="Faria's team on the job"
+          widths={[640, 768, 1024, 1280]}
+          sizes="(min-width: 1024px) 640px, 100vw"
+          loading="lazy"
+          class="w-full h-auto object-cover"
+        />
+      </div>
+
+      <!-- Copy (right on desktop) -->
+      <div class="order-1 lg:order-2">
+        <!-- eyebrow -->
+        <Heading
+          tagName="span"
+          className="h5 font-semibold text-xl text-primary mb-2"
+          >Why Choose Us</Heading
+        >
+
+        <!-- heading -->
+        <Heading tagName="h2" className="text-dark-primary">
+          Why Use Faria's Demolition And Disposal Services?
+        </Heading>
+
+        <!-- body -->
+        <p class="mt-6 text-dark-secondary">
+          Choosing Farias Demolition and Disposal for your demolition and junk
+          removal services is choosing a partner who prioritizes your needs, the
+          community, and the environment. With our years of expertise in the
+          industry, we bring you professional, comprehensive, and safe
+          demolition services, as well as responsible and sustainable junk
+          removal solutions. Our dedicated team works relentlessly to ensure
+          prompt and efficient service, while adhering to stringent safety
+          protocols. In addition, we make it our mission to recycle as much as
+          possible, actively contributing to a cleaner and greener future. At
+          Farias Demolition and Disposal, we guarantee not just a service, but a
+          commitment to excellence and responsibility in all we do.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

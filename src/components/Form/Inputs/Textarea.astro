@@ -1,0 +1,30 @@
+---
+const {
+  label,
+  name,
+  placeholder = "",
+  value = "",
+  required = false,
+  rows = 4,
+  inputClass = "",
+  wrapperClass = "",
+  // ✅ Default label style
+  labelClass = "",
+} = Astro.props;
+---
+<div class={wrapperClass}>
+  {label && (
+    <label for={name} class={labelClass}>
+      {label}
+      {required && <span class="text-primary ml-1">*</span>}
+    </label>
+  )}
+  <textarea
+    id={name}
+    name={name}
+    placeholder={placeholder}
+    required={required}
+    rows={rows}
+    class={inputClass}
+  >{value}</textarea>
+</div>

@@ -1,11 +1,31 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import AboutSection from "@/sections/AboutSection.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../sections/Header.astro";
+import HeroSection from "../sections/HeroSection.astro";
+import CTASection from "@/sections/CTASection.astro";
+import WhyUseSection from "@/sections/WhyUseSection.astro";
+import ServicesSection from "@/sections/ServicesSection.astro";
+import FooterSection from "@/sections/FooterSection.astro";
+import QuoteSection from "@/sections/QuoteSection.astro";
+import FAQSection from "@/sections/FAQSection.astro";
+import ProjectsSection from "@/sections/ProjectsSection.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout
+  title="Your one-stop solution for cleaning and clearing in the State of New Jersey"
+>
+  <Header />
+  <HeroSection />
+  <ServicesSection />
+  <AboutSection />
+  <ProjectsSection />
+  <FAQSection />
+  <CTASection />
+  <WhyUseSection />
+  <QuoteSection />
+  <FooterSection />
+</BaseLayout>

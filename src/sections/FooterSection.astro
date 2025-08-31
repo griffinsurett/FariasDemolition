@@ -1,0 +1,25 @@
+---
+import SocialLinks from "@/components/SocialLinks.astro";
+---
+
+<footer>
+  <div
+    class="flex flex-wrap justify-center lg:justify-between items-center w-95/100 mx-auto py-3 px-5 text-center bg-primary"
+  >
+    <div class="flex gap-6">
+      <a href="/privacy-policy" class="text-white/70 text-base hover:text-white"
+        >Privacy Policy</a
+      >
+      <a href="/cookie-policy" class="text-white/70 text-base hover:text-white"
+        >Cookie Policy</a
+      >
+    </div>
+    <div>
+      <p class="text-lg text-white/90">
+        &copy; {new Date().getFullYear()} Faria's Demolition and Disposal. All rights
+        reserved.
+      </p>
+    </div>
+    <SocialLinks />
+  </div>
+</footer>

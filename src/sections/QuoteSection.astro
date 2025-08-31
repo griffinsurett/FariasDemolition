@@ -1,0 +1,38 @@
+---
+// FariasDemolition/src/Section/QuoteSection.astro
+import Heading from "@/components/Heading";
+import ContactForm from "@/components/Form/Forms/ContactForm.astro";
+import ContactCard from "@/components/LoopComponents/ContactCard.astro";
+import { contactItems } from "@/SiteData";
+---
+
+<section id="quote" class="bg-light-primary section-py">
+  <div class="inner-section">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 lg:gap-12">
+      <div class="lg:col-span-2">
+        <p class="h5 text-primary mb-2">Get a Quote</p>
+        <Heading tagName="h2" className="text-dark-primary">
+          Let's Destroy Something Together!
+        </Heading>
+
+        <div class="mt-8">
+          <ContactForm />
+        </div>
+      </div>
+
+      <div>
+        <div class="cards sticky top-0 space-y-8">
+          {
+            contactItems.map((contactItem) => (
+              <ContactCard 
+                icon={`${contactItem.icon}`}
+                label={contactItem.label}
+                href={contactItem.href}
+              />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+---
+import BgImage from "@/assets/heroBg.jpg";
+import Button from "@/components/Button/Button";
+import BackgroundMedia from "@/components/BackgroundMedia.astro";
+import Heading from "@/components/Heading";
+---
+
+<section class="relative overflow-hidden">
+  <!-- Hero Content -->
+  <div
+    class="relative bg-cover bg-center min-h-[110vh] flex flex-col items-center justify-center pb-24"
+    style={`background-image: url("${BgImage.src}");`}
+  >
+    <div class="absolute inset-0 bg-dark-primary/35"></div>
+
+    <div class="relative w-8/10 z-10">
+      <!-- Headline -->
+      <Heading className="text-light-primary drop-shadow-xl h1">
+        Faria's Demolition and Disposal
+      </Heading>
+
+      <!-- Blurb -->
+      <p class="text-white/90 text-lg md:text-xl max-w-5xl mt-6 md:mt-7">
+        Welcome to Faria's Demolition and Disposal – your one-stop solution for cleaning
+        and clearing in the State of New Jersey. Experience our efficient Demolition &
+        Disposal, Junk Removal, and Estate Cleanouts. We handle, haul, recycle, and
+        respect your space. Make room for the future with Faria's!
+      </p>
+
+      <!-- Buttons -->
+      <div class="mt-6 md:mt-8 flex flex-wrap gap-4 md:gap-6">
+        <Button variant="primary" href="#quote">Get Quote</Button>
+        <Button variant="secondary" href="#subcontract">Subcontract Us</Button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Curved Bottom Border -->
+  <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
+    <svg 
+      class="relative block w-full h-35" 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 1200 120" 
+      preserveAspectRatio="none"
+    >
+      <path 
+        d="M0,60 Q600,120 1200,60 L1200,120 L0,120 Z" 
+        class="fill-light-primary"
+      ></path>
+    </svg>
+  </div>
+</section>

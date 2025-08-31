@@ -1,0 +1,28 @@
+---
+// FariasDemolition/src/components/LoopComponents/ContactCard.astro
+import { Icon } from "astro-icon/components";
+
+const {
+  icon = "lucide:mail", // e.g. "lucide:mail" or "lucide:phone"
+  label = "Contact Us",
+  href = "#",
+  // optional style hooks
+  class: className = "",
+  iconClass = "text-primary",
+  cardClass = "",
+  target = "_self"
+} = Astro.props;
+---
+
+<a
+  href={href}
+  target={target}
+  class={`block bg-light-primary p-10 text-center shadow-xl ring-1 ring-black/5 hover:shadow-2xl transition-all duration-300 hover:scale-105 ${cardClass} ${className}`}
+>
+  <Icon 
+    name={icon} 
+    size="40" 
+    class={`mx-auto ${iconClass}`} 
+  />
+  <div class="mt-5 h6 text-dark-primary">{label}</div>
+</a>

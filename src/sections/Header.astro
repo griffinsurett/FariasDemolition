@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import Logo from "@/assets/farias.png";
+import Button from "@/components/Button/Button";
+import SocialLinks from "@/components/SocialLinks.astro";
+import { contactItems } from "@/SiteData.js"; // ✅ Import contact items
+
+const menuItems = [
+  { label: "Home", href: "#", active: true },
+  { label: "About Us", href: "#" },
+  { label: "Contact Us", href: "#" },
+  { label: "Services", href: "#" },
+  { label: "Projects", href: "#" },
+  { label: "Testimonials", href: "#" },
+  { label: "Subcontract Us", href: "#" },
+];
+
+const inactiveItem = "text-gray-700 hover:bg-primary hover:text-white";
+const contactIconClasses = "text-white";
+const contactIconTextClasses = "text-base hidden lg:block";
+---
+
+<header class="w-full">
+  <!-- Top contact bar -->
+  <div
+    class="w-full mx-auto flex justify-between items-center text-sm bg-primary text-white py-2 px-5"
+  >
+    <!-- Social Media Icons -->
+    <div class="flex items-center space-x-4">
+      <SocialLinks />
+    </div>
+
+    <!-- Contact Info -->
+    <div class="flex items-center space-x-6 py-1 h6">
+      {
+        contactItems.map(({ href, icon, label }) => // ✅ Changed 'text' to 'label'
+            <a
+              href={href ? href : undefined}
+              class="flex items-center space-x-1 hover:opacity-80 transition-opacity"
+            >
+              <Icon name={icon} size="20" class={contactIconClasses} />
+              <span class={contactIconTextClasses}>{label}</span> 
+            </a>
+        )
+      }
+    </div>
+  </div>
+
+  <!-- Main navigation -->
+  <div class="bg-light-primary shadow-sm">
+    <div class="w-95/100 mx-auto px-5">
+      <div class="flex items-center justify-between min-h-18">
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <div class="w-15 h-15 rounded flex items-center justify-center">
+            <Image
+              src={Logo}
+              alt={"Faria's Demolition"}
+              height={65}
+              width={65}
+            />
+          </div>
+        </div>
+
+        <!-- Navigation Links -->
+        <nav class="flex items-center flex-wrap">
+          {
+            menuItems.map(({ label, href, active }) => (
+              <a
+                href={href}
+                class={`px-6 py-3 transition-colors h6 ${active ? "bg-secondary text-white" : inactiveItem}`}
+              >
+                {label}
+              </a>
+            ))
+          }
+
+          <!-- Get Quote Button -->
+          <div class="flex-shrink-0 px-3">
+            <Button variant="primary" href="#quote">Get Quote</Button>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

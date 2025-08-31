@@ -1,0 +1,32 @@
+---
+import Heading from "@/components/Heading";
+import ServicesCard from "@/components/LoopComponents/ServicesCard.astro";
+
+const services = Astro.props.services ?? [
+  {
+    icon: "fa6-solid:trash-can",
+    title: "Junk Removal",
+    description:
+      "Experience hassle-free Junk Removal Services with us. From homes to offices, we handle all clutter. We ensure responsible disposal, recycling, and a cleaner environment. Enjoy your reclaimed space as we do the heavy lifting!",
+  },
+  {
+    icon: "fa6-solid:house",
+    title: "Estate Cleanouts",
+    description:
+      "Comprehensive Estate Cleanouts made stress-free. From furniture to personal items, we handle it all, responsibly disposing or donating. Transition smoothly with our considerate and professional service.",
+  },
+  {
+    icon: "fa6-regular:building",
+    title: "Exterior Demolition",
+    description:
+      "Our exterior demolition services ensure safe and efficient teardown of structures while adhering to all safety and environmental regulations. We work on a diverse range of projects, from small residential buildings to large commercial structures.",
+  },
+];
+---
+<section id="services" class="relative bg-light-primary pb-16 md:pb-24">
+  <div class="inner-section -mt-32 z-20">
+    <div class="grid grid-cols-1 xl:grid-cols-3 gap-8">
+      {services.map((s, i) => <ServicesCard {...s} key={i} />)}
+    </div>
+  </div>
+</section>
