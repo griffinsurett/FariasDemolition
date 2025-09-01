@@ -28,7 +28,7 @@ export const contactItems = [
     type: "location",
     label: "Monmouth County, NJ",
     href: null,
-    icon: "fa6-solid:envelope",
+    icon: "fa6-solid:map-pin",
   },
 ];
 

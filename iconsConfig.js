@@ -6,7 +6,7 @@ export const iconConfig = {
       'chevron-left','chevron-right','menu','x','star',
     ],
     'fa6-solid': [
-      'envelope','phone','location-dot',
+      'envelope','phone','location-dot', 'map-pin',
       'trash-can','house','building','truck','broom','screwdriver-wrench','helmet-safety','person-digging',
       'quote-left',            // ⬅️ add
       'quote-right',        // (optional)

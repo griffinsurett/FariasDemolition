@@ -1,22 +1,61 @@
 ---
-import { Image } from "astro:assets";
-// swap this image for whatever you want to show
-import BgImage from "@/assets/heroBg.jpg";
+// src/sections/ProjectsSection.astro
 import Heading from "@/components/Heading";
+import BeforeAfterSlider from "@/components/LoopComponents/BeforeAfterSlider";
+
+// 🔁 Replace these with your real images
+// e.g. put files in src/assets/projects/* and import them
+import SomersetKitchenBefore from "@/assets/somersetkitchen/somersetkitchendemobefore.jpg";   // demo placeholder
+import SomersetKitchenAfter  from "@/assets/somersetkitchen/somersetkitchendemoafter.jpg";   // demo placeholder
+import WoodbridgeKitchenBefore from "@/assets/woodbridgekitchen/woodbridgekitchenbefore.jpg";
+import WoodbridgeKitchenAfter from "@/assets/woodbridgekitchen/woodbridgekitchenafter.jpg";
+import BelfordYardBefore     from "@/assets/belford-yard/belford-yard-before.jpg";
+import BelfordYardAfter      from "@/assets/belford-yard/belford-yard-after.jpg";
+
+const projects = [
+  {
+    title: "Somerset Kitchen Demolition",
+    before: SomersetKitchenBefore,
+    after: SomersetKitchenAfter,
+  },
+  {
+    title: "Woodbridge Kitchen",
+    before: WoodbridgeKitchenBefore,
+    after: WoodbridgeKitchenAfter,
+  },
+  {
+    title: "Shed Removal / Exterior Cleanup",
+    before: BelfordYardBefore,
+    after: BelfordYardAfter,
+  },
+];
 ---
 
-<section id="about" class="relative bg-light-primary">
-  <div
-    class="inner-section section-py flex justify-center items-center flex-col text-center"
-  >
-    <!-- eyebrow -->
-    <Heading
-      tagName="span"
-      className="h5 font-semibold text-xl text-primary mb-2"
-      >Projects
-    </Heading>
-    <Heading tagName="h2" className="text-dark-primary">
-      Showcasing Our Success: Faria's Featured Projects Our Company
-    </Heading>
+<section id="projects" class="relative bg-light-primary">
+  <div class="inner-section section-py">
+    <!-- Heading -->
+    <div class="text-center mb-8">
+      <Heading tagName="span" className="h5 font-semibold text-xl text-primary mb-2">
+        Projects
+      </Heading>
+      <Heading tagName="h2" className="text-dark-primary">
+        Showcasing Our Success: Faria's Featured Projects
+      </Heading>
+    </div>
+
+    <!-- Sliders -->
+     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+     {projects.map((p, i) => (
+       <div class="space-y-3">
+         <BeforeAfterSlider
+           before={p.before}
+           after={p.after}
+           title={p.title}
+           className="bg-black/5"
+           client:visible
+         />
+       </div>
+     ))}
+   </div>
   </div>
 </section>
