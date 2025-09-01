@@ -28,48 +28,36 @@ export default function AccordionItem({
           className="peer sr-only"
         />
 
-        <label
-          id={labelId}
-          htmlFor={inputId} // ← always targets THIS checkbox
-          className="w-full px-6 py-5 text-left flex items-center gap-4 cursor-pointer select-none"
-        >
-          <span
-            className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary border-2 border-primary text-light-primary transition-colors peer-checked:bg-primary peer-checked:text-white peer-checked:border-primary"
-            aria-hidden="true"
-          >
-            <svg
-              className={`${svgClasses} peer-checked:hidden`}
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <path d="M11 5a1 1 0 0 1 2 0v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H5a1 1 0 1 1 0-2h6V5Z" />
-            </svg>
-            <svg
-              className={`hidden ${svgClasses} peer-checked:block`}
-              viewBox="0 0 24 24"
-              fill="currentColor"
-            >
-              <rect x="5" y="11" width="14" height="2" rx="1" />
-            </svg>
-          </span>
-          <Heading tagName="span" className="h5 text-dark-primary">
-            {question}
-          </Heading>
-          <svg
-            className="ml-auto h-5 w-5 text-dark-secondary transition-transform peer-checked:rotate-180"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6 9l6 6 6-6"
-            />
-          </svg>
-        </label>
+      <label
+  id={labelId}
+  htmlFor={inputId}
+  className="
+    w-full px-6 py-5 text-left flex items-center gap-4 cursor-pointer select-none
+    peer-checked:[&_.icon-plus]:hidden
+    peer-checked:[&_.icon-minus]:block
+  "
+>
+  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary border-2 border-primary text-light-primary">
+    {/* plus */}
+    <svg className={`icon-plus ${svgClasses}`} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M11 5a1 1 0 0 1 2 0v6h6a1 1 0 1 1 0 2h-6v6a1 1 0 1 1-2 0v-6H5a1 1 0 1 1 0-2h6V5Z" />
+    </svg>
+    {/* minus */}
+    <svg className={`icon-minus hidden ${svgClasses}`} viewBox="0 0 24 24" fill="currentColor">
+      <rect x="5" y="11" width="14" height="2" rx="1" />
+    </svg>
+  </span>
+
+  <Heading tagName="span" className="h5 text-dark-primary">{question}</Heading>
+
+  <svg
+    className="ml-auto h-5 w-5 text-dark-secondary transition-transform peer-checked:rotate-180"
+    viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"
+  >
+    <path strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M6 9l6 6 6-6" />
+  </svg>
+</label>
+
 
         <div
           id={panelId}

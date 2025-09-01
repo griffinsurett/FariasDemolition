@@ -1,0 +1,56 @@
+---
+import Heading from "@/components/Heading";
+
+interface Props {
+  name: string;
+  role?: string;
+  quote: string;
+  avatar?: string;         // optional image path/URL
+  class?: string;
+}
+
+const {
+  name = "Happy Customer",
+  role = "",
+  quote = "",
+  avatar,
+  class: className = "",
+} = Astro.props;
+
+const initial = (name || "U").trim().charAt(0).toUpperCase();
+---
+
+<article class={`relative bg-white rounded-2xl shadow-xl ring-1 ring-black/5 px-8 md:px-10 pt-20 pb-10 text-center ${className}`}>
+  <!-- Floating avatar badge -->
+ <!-- Avatar (floats above the card) -->
+<div class="absolute -top-12 left-1/2 -translate-x-1/2">
+  <div
+    class="h-28 w-28 rounded-full overflow-hidden
+           outline outline-[10px] outline-[#FAF7E2]  /* white halo to separate from bg */
+           bg-light-primary grid place-items-center"
+  >
+    {
+      avatar
+        ? <img src={avatar} alt={`${name} headshot`} class="h-full w-full object-cover" loading="lazy" />
+        : <span class="text-4xl font-bold text-primary leading-none">{initial}</span>
+    }
+  </div>
+</div>
+
+
+  <!-- Name + role -->
+  <Heading tagName="h3" className="h3 text-dark-primary">{name}</Heading>
+  {role && (
+    <p class="h6 text-dark-secondary mt-1 font-semibold">{role}</p>
+  )}
+
+  <!-- Quote copy -->
+  <p class="mt-6 text-dark-secondary text-lg leading-8">
+    {quote}
+  </p>
+
+  <!-- Closing quotes -->
+  <div class="mt-8 flex justify-center gap-2 select-none" aria-hidden="true">
+    <span class="text-primary text-4xl leading-none">”</span>
+  </div>
+</article>

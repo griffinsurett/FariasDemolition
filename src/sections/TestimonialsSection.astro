@@ -1,0 +1,43 @@
+---
+import Heading from "@/components/Heading";
+import TestimonialCard from "@/components/LoopComponents/TestimonialCard.astro";
+import dimitripic from "@/assets/dimitripic.png";
+import edpetraccopic from "@/assets/edpatr.jpg";
+import chrispic from "@/assets/chrisd.jpg";
+
+const testimonials = Astro.props.testimonials ?? [
+  {
+    name: "Dmitrii Nikitin",
+    role: "Residential Customer",
+    quote:
+      "I’m very happy with the junk removal service I received. Punctual, efficient, and friendly—made the whole process stress-free. Highly recommended!",
+    avatar: dimitripic.src,
+  },
+  {
+    name: "Eddie Petracco",
+    role: "Owner of Color4u and Built4u services",
+    quote:
+      "I outsource all renovation cleanups to these guys—phenomenal work, always spotless, and they impress on every demo. Highly suggest working with this company.",
+    avatar: edpetraccopic.src,
+  },
+  {
+    name: "Chris D’alo",
+    role: "Owner of Superior Home Improvement",
+    quote:
+      "Numerous demo jobs made easy. They show up, get right to work, and handle the mess. Been using them for months—don’t regret a second of it.",
+    avatar: chrispic.src,
+  },
+];
+---
+<section id="testimonials" class="bg-secondary section-py">
+  <div class="inner-section">
+    <div class="text-center mb-20">
+      <Heading tagName="h2" className="text-dark-primary">Testimonials</Heading>
+      <p class="h5 text-dark-primary/90 mt-2">Why Use Faria's Demolition And Disposal Services?</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {testimonials.map((t, i) => <TestimonialCard {...t} key={i} />)}
+    </div>
+  </div>
+</section>
