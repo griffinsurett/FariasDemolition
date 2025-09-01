@@ -36,17 +36,17 @@ export const contactItems = [
 export const socialMediaLinks = [
   {
     name: "Yelp",
-    href: "#",
+    href: "https://www.yelp.com/biz/faria-s-demolition-and-disposal-middletown-township?uid=raWcbRzosIXfHAV1mWDXFQ&utm_source=ishare",
     icon: "fa6-brands:yelp",
   },
   {
     name: "Instagram", 
-    href: "#",
+    href: "https://www.instagram.com/fariasdemolition/",
     icon: "fa6-brands:instagram",
   },
   {
     name: "LinkedIn",
-    href: "#",
+    href: "https://www.facebook.com/people/Farias-Demolition-Disposal/100090931177545/?mibextid=LQQJ4d",
     icon: "fa6-brands:linkedin",
   },
 ];
