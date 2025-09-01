@@ -35,13 +35,14 @@ const contactIconTextClasses = "text-base hidden lg:block";
     <div class="flex items-center space-x-6 py-1 h6">
       {
         contactItems.map(({ href, icon, label }) => // ✅ Changed 'text' to 'label'
-            <a
+            <Button
+            variant="link"
               href={href ? href : undefined}
-              class="flex items-center space-x-1 hover:opacity-80 transition-opacity"
+              className="flex items-center space-x-1 hover:opacity-80 transition-opacity"
             >
               <Icon name={icon} size="20" class={contactIconClasses} />
               <span class={contactIconTextClasses}>{label}</span> 
-            </a>
+            </Button>
         )
       }
     </div>
@@ -67,12 +68,13 @@ const contactIconTextClasses = "text-base hidden lg:block";
         <nav class="flex items-center flex-wrap">
           {
             menuItems.map(({ label, href, active }) => (
-              <a
+              <Button
+                variant="link"
                 href={href}
-                class={`px-6 py-3.5 transition-colors h6 ${active ? "bg-secondary text-white" : inactiveItem}`}
+                className={`px-6 py-3.5 h6 ${active ? "bg-secondary text-white" : inactiveItem}`}
               >
                 {label}
-              </a>
+              </Button>
             ))
           }
 
