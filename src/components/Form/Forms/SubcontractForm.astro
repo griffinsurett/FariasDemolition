@@ -1,0 +1,99 @@
+---
+import Form from "@/components/Form/Form.astro";
+import TextInput from "@/components/Form/Inputs/TextInput.astro";
+import Textarea from "@/components/Form/Inputs/Textarea.astro";
+// import { getCurrentEntryId } from "@/utils/CurrentEntry";
+
+const {
+  inputClasses = "border border-light-secondary rounded-md transition-default p-2 w-full bg-bg placeholder:text-dark-secondary outline-none",
+  wrapperClasses = "mb-2",
+  labelClass = "block h6 text-dark-secondary mb-2",
+} = Astro.props;
+
+const formAction =
+  import.meta.env.PUBLIC_INTEGRATION_FORMSPREE +
+  import.meta.env.PUBLIC_CONTACT_FORM;
+
+// Extract current page identifier
+// const currentPage = getCurrentEntryId(Astro);
+const doubleInputs = "flex flex-col lg:flex-row lg:space-x-6 space-y-3"
+---
+<Form
+  name="contact-form"
+  formClass="w-full space-y-3"
+  enableSuccessBanner={true}
+  action={formAction}
+  labelClass
+  successBannerMessage="Thank you for your message. We will get in touch with you shortly."
+  successBannerClass="p-2 bg-primary text-bg border border-dark-secondary bg-light-opacity"
+>
+  <!-- Hidden input for current page -->
+  <input type="hidden" name="Page-of-Submission" />
+
+  <!-- Row 1 -->
+  <div class={doubleInputs}>
+    <div class="w-full lg:w-1/2">
+      <TextInput
+        label="First Name"
+        name="firstName"
+        placeholder="First Name"
+        required
+        labelClass={labelClass}
+        inputClass={inputClasses}
+        wrapperClass={wrapperClasses}
+      />
+    </div>
+    <div class="w-full lg:w-1/2">
+      <TextInput
+        label="Last Name"
+        name="lastName"
+        placeholder="Last Name"
+        required
+        labelClass={labelClass}
+        inputClass={inputClasses}
+        wrapperClass={wrapperClasses}
+      />
+    </div>
+  </div>
+
+  <!-- Row 2 -->
+  <div class={doubleInputs}>
+    <div class="w-full lg:w-1/2">
+      <TextInput
+        label="Email Address"
+        name="email"
+        type="email"
+        placeholder="you@example.com"
+        required
+        labelClass={labelClass}
+        inputClass={inputClasses}
+        wrapperClass={wrapperClasses}
+      />
+    </div>
+    <div class="w-full lg:w-1/2">
+      <TextInput
+        label="Phone Number"
+        name="phone"
+        type="tel"
+        placeholder="123-456-7890"
+        labelClass={labelClass}
+        inputClass={inputClasses}
+        wrapperClass={wrapperClasses}
+      />
+    </div>
+  </div>
+
+  <!-- Row 3 -->
+  <div class="w-full">
+    <Textarea
+      label="Message"
+      name="message"
+      placeholder="Tell us more about your needs…"
+      required
+      labelClass={labelClass}
+      rows={5}
+      inputClass={inputClasses}
+      wrapperClass={wrapperClasses}
+    />
+  </div>
+</Form>

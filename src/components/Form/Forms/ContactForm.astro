@@ -2,10 +2,10 @@
 import Form from "@/components/Form/Form.astro";
 import TextInput from "@/components/Form/Inputs/TextInput.astro";
 import Textarea from "@/components/Form/Inputs/Textarea.astro";
-// import { getCurrentEntryId } from "@/utils/CurrentEntry";
+import Select from "@/components/Form/Inputs/Select.astro";
 
 const {
-  inputClasses = "border border-light-secondary rounded-md transition-default p-2 w-full bg-bg placeholder:text-dark-secondary outline-none",
+  inputClasses = "border border-light-secondary rounded-md transition-default p-2 w-full bg-bg text-dark-secondary placeholder:text-dark-secondary outline-none",
   wrapperClasses = "mb-2",
   labelClass = "block h6 text-dark-secondary mb-2",
 } = Astro.props;
@@ -14,9 +14,18 @@ const formAction =
   import.meta.env.PUBLIC_INTEGRATION_FORMSPREE +
   import.meta.env.PUBLIC_CONTACT_FORM;
 
-// Extract current page identifier
-// const currentPage = getCurrentEntryId(Astro);
-const doubleInputs = "flex flex-col lg:flex-row lg:space-x-6 space-y-3"
+const doubleInputs = "flex flex-col lg:flex-row lg:space-x-6 space-y-3";
+
+// dropdown options for “How Did You Find Us?”
+const sourceOptions = [
+  { value: "google", label: "Google Search" },
+  { value: "maps", label: "Google Maps" },
+  { value: "yelp", label: "Yelp" },
+  { value: "instagram", label: "Instagram" },
+  { value: "facebook", label: "Facebook" },
+  { value: "referral", label: "Referral" },
+  { value: "other", label: "Other" },
+];
 ---
 
 <Form
@@ -29,16 +38,15 @@ const doubleInputs = "flex flex-col lg:flex-row lg:space-x-6 space-y-3"
   successBannerClass="p-2 bg-primary text-bg border border-dark-secondary bg-light-opacity"
 >
   <!-- Hidden input for current page -->
-  <input type="hidden" name="Page-of-Submission" />
+  <input type="hidden" name="Page-of-Submission" value={Astro.url?.pathname || "/"} />
 
-  <!-- Row 1 -->
+  <!-- Row 1: First / Last -->
   <div class={doubleInputs}>
     <div class="w-full lg:w-1/2">
       <TextInput
         label="First Name"
         name="firstName"
         placeholder="First Name"
-        required
         labelClass={labelClass}
         inputClass={inputClasses}
         wrapperClass={wrapperClasses}
@@ -49,7 +57,6 @@ const doubleInputs = "flex flex-col lg:flex-row lg:space-x-6 space-y-3"
         label="Last Name"
         name="lastName"
         placeholder="Last Name"
-        required
         labelClass={labelClass}
         inputClass={inputClasses}
         wrapperClass={wrapperClasses}
@@ -57,44 +64,80 @@ const doubleInputs = "flex flex-col lg:flex-row lg:space-x-6 space-y-3"
     </div>
   </div>
 
-  <!-- Row 2 -->
-  <div class={doubleInputs}>
-    <div class="w-full lg:w-1/2">
-      <TextInput
-        label="Email Address"
-        name="email"
-        type="email"
-        placeholder="you@example.com"
-        required
-        labelClass={labelClass}
-        inputClass={inputClasses}
-        wrapperClass={wrapperClasses}
-      />
-    </div>
-    <div class="w-full lg:w-1/2">
-      <TextInput
-        label="Phone Number"
-        name="phone"
-        type="tel"
-        placeholder="123-456-7890"
-        labelClass={labelClass}
-        inputClass={inputClasses}
-        wrapperClass={wrapperClasses}
-      />
-    </div>
-  </div>
+  <!-- Email (required) -->
+  <TextInput
+    label="Email"
+    name="email"
+    type="email"
+    placeholder="Email Address"
+    required
+    labelClass={labelClass}
+    inputClass={inputClasses}
+    wrapperClass={wrapperClasses}
+  />
 
-  <!-- Row 3 -->
-  <div class="w-full">
-    <Textarea
-      label="Message"
-      name="message"
-      placeholder="Tell us more about your needs…"
-      required
-      labelClass={labelClass}
-      rows={5}
-      inputClass={inputClasses}
-      wrapperClass={wrapperClasses}
-    />
-  </div>
+  <!-- Phone -->
+  <TextInput
+    label="Phone Number"
+    name="phone"
+    type="tel"
+    placeholder="Mobile Number"
+    labelClass={labelClass}
+    inputClass={inputClasses}
+    wrapperClass={wrapperClasses}
+  />
+
+  <!-- Company -->
+  <TextInput
+    label="Company"
+    name="company"
+    placeholder="Name of Your Company If you have one"
+    labelClass={labelClass}
+    inputClass={inputClasses}
+    wrapperClass={wrapperClasses}
+  />
+
+  <!-- How Did You Find Us? (required) -->
+  <Select
+    label="How Did You Find Us?"
+    name="howDidYouFindUs"
+    options={sourceOptions}
+    required
+    labelClass={labelClass}
+    selectClass={inputClasses}
+    wrapperClass={wrapperClasses}
+  />
+
+  <!-- Website -->
+  <TextInput
+    label="Website"
+    name="website"
+    type="url"
+    placeholder="Your Companies Website"
+    labelClass={labelClass}
+    inputClass={inputClasses}
+    wrapperClass={wrapperClasses}
+  />
+
+  <!-- Subject -->
+  <TextInput
+    label="Subject"
+    name="subject"
+    placeholder="Subject"
+    labelClass={labelClass}
+    inputClass={inputClasses}
+    wrapperClass={wrapperClasses}
+  />
+
+  <!-- Your Message (required) -->
+  <Textarea
+    label="Your Message"
+    name="message"
+    placeholder="Your Message"
+    required
+    rows={6}
+    labelClass={labelClass}
+    inputClass={inputClasses}
+    wrapperClass={wrapperClasses}
+  />
 </Form>
