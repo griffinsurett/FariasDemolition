@@ -31,7 +31,7 @@ const testimonials = Astro.props.testimonials ?? [
 ---
 <section id="testimonials" class="bg-secondary section-py">
   <div class="inner-section">
-    <div class="text-center mb-20">
+    <div class="text-center mb-25">
       <Heading tagName="h2" className="text-dark-primary">Testimonials</Heading>
       <p class="h5 text-dark-primary/90 mt-2">Why Use Faria's Demolition And Disposal Services?</p>
     </div>
@@ -39,5 +39,6 @@ const testimonials = Astro.props.testimonials ?? [
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
       {testimonials.map((t, i) => <TestimonialCard {...t} key={i} />)}
     </div>
+    <p class="h4 text-center pt-5">More than 500+ consumers have put their faith in us</p>
   </div>
 </section>
