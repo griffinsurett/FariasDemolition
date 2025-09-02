@@ -1,10 +1,12 @@
 // src/SiteData.js - Compatible with both Astro and React
 const siteDomain = import.meta.env.PUBLIC_SITE_DOMAIN;
+import Logo from "@/assets/farias.png"
 
 export const SiteData = {
   title: "Faria's Demolition",
   legalName: "Faria's Demolition LLC",
   tagline: "Demolition & Disposal Services in NJ",
+  Logo: Logo.src,
   description: "Welcome to Faria's Demolition and Disposal – your one-stop solution for cleaning and clearing in the State of New Jersey. Experience our efficient Demolition & Disposal, Junk Removal, and Estate Cleanouts. We handle, haul, recycle, and respect your space. Make room for the future with Faria's!",
   domain: siteDomain,
   url: `https://${siteDomain}`,

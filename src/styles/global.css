@@ -41,7 +41,7 @@
 }
 
 @layer base {
-  body { @apply bg-primary; }
+  body { @apply bg-primary overflow-x-hidden }
 }
 
 @utility inner-section {
