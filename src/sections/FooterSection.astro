@@ -5,7 +5,7 @@ import Button from "@/components/Button/Button"
 
 <footer>
   <div
-    class="flex flex-wrap justify-center lg:justify-between items-center w-95/100 mx-auto py-3 px-5 text-center bg-primary"
+    class="flex flex-wrap justify-center lg:justify-between items-center gap-3 w-95/100 mx-auto py-3 px-5 text-center bg-primary"
   >
     <div class="flex gap-6">
       <Button variant="link" href="/privacy-policy" className="text-white/70 text-base hover:text-white"
@@ -15,12 +15,10 @@ import Button from "@/components/Button/Button"
         >Cookie Policy</Button
       >
     </div>
-    <div>
-      <p class="text-lg text-white/90">
-        &copy; {new Date().getFullYear()} Faria's Demolition and Disposal. All rights
-        reserved.
-      </p>
-    </div>
+    <p class="text-lg text-white/90">
+      &copy; {new Date().getFullYear()} Faria's Demolition and Disposal. All rights
+      reserved.
+    </p>
     <SocialLinks />
   </div>
 </footer>
