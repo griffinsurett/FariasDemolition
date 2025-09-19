@@ -18,7 +18,7 @@ export default function AccordionItem({
   const svgClasses = "h-4 w-6"
 
   return (
-    <div className={`relative ${className}`} data-accordion-item>
+    <div className={`relative load fade-in ${className}`} data-accordion-item>
       <article className="rounded-2xl bg-light-primary border border-gray-200/60 transition-all">
         <input
           id={inputId}

@@ -80,7 +80,7 @@ export default function BeforeAfterSlider({
     <article
       ref={containerRef}
       className={
-        "relative w-full overflow-hidden ring-1 ring-black/5 shadow-xl " +
+        "relative w-full overflow-hidden ring-1 ring-black/5 shadow-xl" +
         "h-80 md:h-[58vh] " +
         className
       }

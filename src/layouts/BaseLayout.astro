@@ -3,6 +3,7 @@ import HeadTags from "./HeadTags.astro";
 import SEO from "./SEO.astro";
 import Theme from "./Theme.astro";
 import BodyTags from "./BodyTags.astro";
+import AnimationLayout from "@/layouts/AnimationLayout.astro";
 
 export interface Props {
   [key: string]: any; // Allow all props
@@ -33,9 +34,10 @@ const { ...seoProps } = Astro.props;
   <body class="bg-bg text-text antialiased">
     <!-- Body tags placeholder -->
     <BodyTags />
-    
+    <AnimationLayout>
     <div id="app" class="min-h-screen flex flex-col">
       <slot />
     </div>
+    </AnimationLayout>
   </body>
 </html>
