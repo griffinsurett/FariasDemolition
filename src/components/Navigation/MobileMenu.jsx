@@ -61,7 +61,7 @@ export default function MobileMenu({
       <Modal
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
-        className="w-screen h-screen bg-light-primary p-0"
+        className="w-screen h-screen bg-light-primary p-0 flex flex-col justify-between"
         overlayClass="bg-black bg-opacity-50 lg:hidden"
         closeButtonClass="absolute top-4 right-4 z-10 text-gray-700 hover:text-primary transition-colors bg-white rounded-full p-2 shadow-md"
       >
