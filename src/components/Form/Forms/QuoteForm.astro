@@ -5,7 +5,7 @@ import Textarea from "@/components/Form/Inputs/Textarea.astro";
 // import { getCurrentEntryId } from "@/utils/CurrentEntry";
 
 const {
-  inputClasses = "border border-light-secondary rounded-md transition-default p-2 w-full bg-bg placeholder:text-dark-secondary outline-none",
+  inputClasses = "border border-light-secondary rounded-md transition-default p-2 w-full bg-light-primary placeholder:text-dark-secondary outline-none",
   wrapperClasses = "mb-2",
   labelClass = "block h6 text-dark-secondary mb-2",
 } = Astro.props;
@@ -16,7 +16,7 @@ const formAction =
 
 // Extract current page identifier
 // const currentPage = getCurrentEntryId(Astro);
-const doubleInputs = "flex flex-col lg:flex-row lg:space-x-6 space-y-3"
+const doubleInputs = "flex flex-col lg:flex-row lg:space-x-6 space-y-3";
 ---
 
 <Form

@@ -4,6 +4,8 @@ import SEO from "./SEO.astro";
 import Theme from "./Theme.astro";
 import BodyTags from "./BodyTags.astro";
 import AnimationLayout from "@/layouts/AnimationLayout.astro";
+import Header from "@/sections/Header.astro";
+import FooterSection from "@/sections/FooterSection.astro";
 
 export interface Props {
   [key: string]: any; // Allow all props
@@ -18,7 +20,7 @@ const { ...seoProps } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    
+
     <!-- Theme, favicons, and pre-paint scripts -->
     <Theme />
 
@@ -31,13 +33,15 @@ const { ...seoProps } = Astro.props;
     {seoProps.noindex && <meta name="robots" content="noindex,nofollow" />}
   </head>
 
-  <body class="bg-bg text-text antialiased">
+  <body class="bg-light-primary text-text antialiased">
+    <Header />
     <!-- Body tags placeholder -->
     <BodyTags />
     <AnimationLayout>
-    <div id="app" class="min-h-screen flex flex-col">
-      <slot />
-    </div>
+      <div id="app" class="min-h-screen flex flex-col">
+        <slot />
+      </div>
+      <FooterSection />
     </AnimationLayout>
   </body>
 </html>

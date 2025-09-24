@@ -1,0 +1,16 @@
+---
+import SubcontractForm from "@/components/Form/Forms/SubcontractForm.astro";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import QuoteSection from "@/sections/QuoteSection.astro";
+import SecondaryHero from "@/sections/SecondaryHero.astro";
+---
+
+<BaseLayout title="Subcontract With Us!">
+  <SecondaryHero
+    title="Subcontract With Us"
+    subtitle="We are always looking for reliable subcontractors to partner with on our projects. If you are interested in working with us, please fill out the form below and we will get in touch with you."
+  />
+  <div class="bg-light-primary">
+    <QuoteSection formComponent={SubcontractForm} />
+  </div>
+</BaseLayout>

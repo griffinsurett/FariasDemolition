@@ -5,13 +5,12 @@ import Textarea from "@/components/Form/Inputs/Textarea.astro";
 import Select from "@/components/Form/Inputs/Select.astro";
 
 const {
-  inputClasses = "border border-light-secondary rounded-md transition-default p-2 w-full bg-bg text-dark-secondary placeholder:text-dark-secondary outline-none",
+  inputClasses = "border border-light-secondary rounded-md transition-default p-2 w-full bg-light-primary text-dark-secondary placeholder:text-dark-secondary outline-none",
   wrapperClasses = "mb-2",
   labelClass = "block h6 text-dark-secondary mb-2",
 } = Astro.props;
 
-const formAction =
-  "https://formspree.io/f/manqygwr";
+const formAction = "https://formspree.io/f/manqygwr";
 
 const doubleInputs = "flex flex-col lg:flex-row lg:space-x-6 space-y-3";
 
@@ -37,7 +36,11 @@ const sourceOptions = [
   successBannerClass="p-2 bg-primary text-bg border border-dark-secondary bg-light-opacity"
 >
   <!-- Hidden input for current page -->
-  <input type="hidden" name="Page-of-Submission" value={Astro.url?.pathname || "/"} />
+  <input
+    type="hidden"
+    name="Page-of-Submission"
+    value={Astro.url?.pathname || "/"}
+  />
 
   <!-- Row 1: First / Last -->
   <div class={doubleInputs}>
