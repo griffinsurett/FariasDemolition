@@ -13,9 +13,6 @@ const {
   formClass = "",
   submitClass = "w-full lg:w-auto mt-2 justify-center cursor-pointer",
   submitLabel = "Submit Form",
-  enableSuccessBanner = false,
-  successBannerMessage = "Thank you for your submission!",
-  successBannerClass = "p-2 bg-primary text-dark-primary border border-dark-secondary",
   showConsent = true,
   consentText = `I consent to have ${SiteData.title} store my submitted information so they can respond`,
   consentLearnMoreLabel = "Learn more",
@@ -40,9 +37,7 @@ const {
     method={method}
     action={action}
     class={formClass}
-    data-success-banner={enableSuccessBanner}
-    data-success-message={successBannerMessage}
-    data-success-class={successBannerClass}
+    autocomplete="off"
   >
     <slot />
 
@@ -79,51 +74,48 @@ const {
   </form>
 </div>
 
-<script is:inline>
+<script>
+  // Clear form if we came back from Formspree
   document.addEventListener("DOMContentLoaded", () => {
-    document
-      .querySelectorAll('form[data-success-banner="true"]')
-      .forEach((form) => {
-        form.addEventListener("submit", async (e) => {
-          e.preventDefault();
-          const data = new URLSearchParams(new FormData(form));
-
-          let res;
-          try {
-            res = await fetch(form.action || "/", {
-              method: form.method.toUpperCase(),
-              headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                Accept: "application/json",
-              },
-              body: data.toString(),
-            });
-          } catch (networkErr) {
-            console.error("Network error submitting form:", networkErr);
-            return;
-          }
-
-          // hide the form in all cases
-          form.style.display = "none";
-
-          const banner = document.createElement("div");
-          banner.className = form.dataset.successClass;
-
-          if (res.ok) {
-            // your custom success message
-            banner.textContent = form.dataset.successMessage;
+    // Check if URL contains success indicator or if referrer is Formspree
+    const urlParams = new URLSearchParams(window.location.search);
+    const isFromFormspree = document.referrer.includes('formspree.io');
+    
+    if (isFromFormspree || urlParams.get('submitted') === 'true') {
+      // Clear all forms on the page
+      document.querySelectorAll('form').forEach(form => {
+        form.reset();
+        // Also clear any auto-filled fields
+        form.querySelectorAll('input, textarea, select').forEach(field => {
+          if (field.type === 'checkbox' || field.type === 'radio') {
+            field.checked = false;
           } else {
-            // try to pull an error out of the JSON, or fall back
-            let errMsg = "There was a problem submitting the form.";
-            try {
-              const json = await res.json();
-              if (json.error) errMsg = json.error;
-            } catch {}
-            banner.textContent = errMsg;
+            field.value = '';
           }
-
-          form.parentNode.insertBefore(banner, form.nextSibling);
         });
       });
+      
+      // Show success message
+      const successDiv = document.createElement('div');
+      successDiv.className = 'p-4 bg-primary text-white rounded mb-4';
+      successDiv.textContent = 'Thank you! Your message has been sent successfully.';
+      
+      const firstForm = document.querySelector('form');
+      if (firstForm && firstForm.parentNode) {
+        firstForm.parentNode.insertBefore(successDiv, firstForm);
+        
+        // Remove success message after 5 seconds
+        setTimeout(() => {
+          successDiv.remove();
+        }, 5000);
+      }
+      
+      // Clean URL
+      if (urlParams.get('submitted') === 'true') {
+        urlParams.delete('submitted');
+        const newUrl = window.location.pathname + (urlParams.toString() ? '?' + urlParams.toString() : '');
+        window.history.replaceState({}, '', newUrl);
+      }
+    }
   });
 </script>
