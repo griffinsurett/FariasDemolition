@@ -1,37 +1,56 @@
 ---
 import BgImage from "@/assets/heroBg.jpg";
 import Button from "@/components/Button/Button";
-import BackgroundMedia from "@/components/BackgroundMedia.astro";
 import Heading from "@/components/Heading";
+
+// Accept props with defaults
+const {
+  title = "Our Services",
+  subtitle = "Welcome to Faria's Demolition and Disposal – your one-stop solution for cleaning and clearing in the State of New Jersey. Experience our efficient Demolition & Disposal, Junk Removal, and Estate Cleanouts. We handle, haul, recycle, and respect your space. Make room for the future with Faria's!",
+  backgroundImage = BgImage,
+  showButtons = false,
+  primaryButtonText = "Get Quote",
+  primaryButtonHref = "#quote",
+  secondaryButtonText = "Subcontract Us", 
+  secondaryButtonHref = "#subcontract",
+  overlayOpacity = "35", // percentage for bg-dark-primary opacity
+  minHeight = "60vh"
+} = Astro.props;
+
+// Handle background image - can be an import or a string URL
+const bgImageSrc = typeof backgroundImage === 'string' ? backgroundImage : backgroundImage.src;
 ---
 
 <section class="relative overflow-hidden">
   <!-- Hero Content -->
   <div
-    class="relative bg-cover bg-center min-h-[60vh] flex flex-col items-center justify-center pb-24"
-    style={`background-image: url("${BgImage.src}");`}
+    class={`relative bg-cover bg-center min-h-[${minHeight}] flex flex-col items-center justify-center pb-24`}
+    style={`background-image: url("${bgImageSrc}");`}
   >
-    <div class="absolute inset-0 bg-dark-primary/35"></div>
+    <div class={`absolute inset-0 bg-dark-primary/${overlayOpacity}`}></div>
 
     <div class="relative w-8/10 z-10 text-center">
       <!-- Headline -->
       <Heading className="text-light-primary drop-shadow-xl h1">
-        Our Services
+        {title}
       </Heading>
 
       <!-- Blurb -->
       <p class="text-white/90 text-lg md:text-xl max-w-5xl mt-6 md:mt-7">
-        Welcome to Faria's Demolition and Disposal – your one-stop solution for cleaning
-        and clearing in the State of New Jersey. Experience our efficient Demolition &
-        Disposal, Junk Removal, and Estate Cleanouts. We handle, haul, recycle, and
-        respect your space. Make room for the future with Faria's!
+        {subtitle}
       </p>
 
       <!-- Buttons -->
-      <!-- <div class="mt-6 md:mt-8 flex flex-wrap gap-4 md:gap-6">
-        <Button variant="primary" href="#quote">Get Quote</Button>
-        <Button variant="secondary" href="#subcontract">Subcontract Us</Button>
-      </div> -->
+      {showButtons && (
+        <div class="mt-6 md:mt-8 flex flex-wrap gap-4 md:gap-6 justify-center">
+          <Button variant="primary" href={primaryButtonHref}>
+            {primaryButtonText}
+          </Button>
+          <Button variant="secondary" href={secondaryButtonHref}>
+            {secondaryButtonText}
+          </Button>
+        </div>
+      )}
     </div>
   </div>
 
