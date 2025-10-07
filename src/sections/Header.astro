@@ -1,7 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
-import Logo from "@/assets/farias.png";
+import Logo from "@/assets/new-logo-transparent.png";
 import Button from "@/components/Button/Button";
 import SocialLinks from "@/components/SocialLinks.astro";
 import HeaderMenu from "@/components/Navigation/HeaderMenu";
@@ -69,7 +69,7 @@ const enhancedMenuItems = menuItems.map(item => ({
 
   <!-- Main navigation -->
   <div class="bg-light-primary shadow-sm">
-    <div class="w-95/100 mx-auto">
+    <div class="w-95/100 xl:py-1 mx-auto">
       <div class="flex items-center justify-between min-h-18">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
@@ -79,7 +79,7 @@ const enhancedMenuItems = menuItems.map(item => ({
               alt={"Faria's Demolition"}
               height={65}
               width={65}
-              class="w-12 h-12 lg:w-16 lg:h-16"
+              class="w-16 h-16 lg:w-20 lg:h-20"
             />
           </a>
         </div>
